@@ -2,35 +2,33 @@ import React, { useState } from "react";
 
 const Fruta = ({ fruta, index, addCantidad }) => {
 
-    const [cantidad, setCantidad] = useState(0)
+
 
     const agregar = () => {
-
-        setCantidad(cantidad + 1);
-        //addCantidad(index,cantidad);
+        const total = fruta.cantidad + 1;
+        addCantidad(index, total);
     }
 
     const quitar = () => {
 
-        if (cantidad > 0) {
-            setCantidad(cantidad - 1);
-          //  addCantidad(index, cantidad);
+        if (fruta.cantidad > 0) {
+            const total = fruta.cantidad - 1;
+            addCantidad(index, total);
         }
 
     }
 
     const limpiar = () => {
 
-        setCantidad(0);
-        //addCantidad(index,cantidad);
+        addCantidad(index, 0);
     }
 
     return (
         <div>
             <h3>{fruta.nombre}</h3>
             <p>Precio: {fruta.precio}</p>
-            <p>Cantidad: {cantidad} </p>
-            <p><strong>Total:</strong> {fruta.precio * cantidad}</p>
+            <p>Cantidad: {fruta.cantidad} </p>
+            <p><strong>Total:</strong> {fruta.precio * fruta.cantidad}</p>
 
             <button onClick={agregar}>+</button>
             <button onClick={quitar}>-</button>
